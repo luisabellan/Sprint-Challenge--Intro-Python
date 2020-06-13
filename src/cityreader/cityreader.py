@@ -4,12 +4,13 @@ import csv
 # fields for name, lat and lon (representing latitude and longitude).
 
 class City:
-  def __init__(self,lat,lon):
+  def __init__(self,name, lat,lon):
+    self.name = name
     self.lat = lat
     self.lon = lon
     
   def __str__(self):
-    return (f"Latitude: {self.lat}\n Longitud: {self.lon}\n")
+    return (f"{self.name} {self.lat} {self.lon}\n")
 
 
 
@@ -34,10 +35,11 @@ def cityreader(cities=[]):
   with open('cities.csv', newline='') as csvfile:
     citiesreader = csv.reader(csvfile,delimiter=',', quotechar='|')
     for row in citiesreader:
+      name = ''.join(row[0])
       lat = ''.join(row[3])
       lon = ''.join(row[4])
       
-      cities.append(City(lat,lon))
+      cities.append(City(name,lat,lon))
      
       
     
