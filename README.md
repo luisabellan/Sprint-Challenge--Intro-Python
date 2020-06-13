@@ -41,7 +41,7 @@ In order to meet MVP requirements for this Sprint Challenge, complete all of the
 
 In your solution, it is essential that you follow best practices and produce clean and professional results. Schedule time to review, refine, and assess your work and perform basic professional polishing including spell-checking and grammar-checking on your work. It is better to submit a challenge that meets the MVP requirements than one that attempts too much and does not.
 
-## Stretch Problems
+## Stretch Problems 
 
 The `cityreader` directory poses an stretch problem that builds upon the functionality you are to implement as part of the non-stretch requirements in the `cityreader` directory. 
 
