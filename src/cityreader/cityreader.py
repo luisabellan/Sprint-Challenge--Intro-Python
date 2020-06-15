@@ -49,7 +49,8 @@ cityreader(cities)
 
 # Print the list of cities (name, lat, lon), 1 record per line.
 for c in cities:
-    print(c)
+    pass
+    # TODO uncomment this line print(c)
 
 # STRETCH GOAL!
 #
@@ -90,31 +91,41 @@ lon1 = coord1.split(',')[1]
 lat2 = coord2.split(',')[0]
 lon2 = coord2.split(',')[1]
 
-def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
+def cityreader_stretch(lat1, lon1, lat2, lon2, cities):
 
-  lat = 0.0;
-  lon = 0.0;
+
   lat1 = float(lat1)
   lat2 = float(lat2)
   lon1 = float(lon1)
   lon2 = float(lon2)
   cities = []
-  cities.append(cities)
+  cities.append(cityreader(cities))
 
   # within will hold the cities that fall within the specified region
 
-  def inArea(lat1, lon1, lat2, lon2, city):
+  def isInArea(lat1,lon1,lat2,lon2,city):
+
+ # TODO something like this to be implemented on line 117
+ # try:
+ #        list1=[float(x) for x in l1]
+ #        list2=[float(x) for x in l2]
+ #    except ValueError,e:
+ #        print "error",e,"on line",i
 
 
-      if city.lat >= min(float(lat1),float(lat2)) and city.lat <= max(float(lat1),float(lat2)):
-            #if city.lon >= min(float(lon1),float(lon2)) and city.lon <= max(float(lon1),float(lon2)):
 
-            print(city)
-            return city
+      if float(city.lat) >= min(float(lat1),float(lat2)) and city.lat <= max(float(lat1),float(lat2)):
+          if city.lon >= min(float(lon1),float(lon2)) and city.lon <= max(float(lon1),float(lon2)):
+            return True
 
+  def findCitiesInArea(lat1, lon1, lat2, lon2, city):
+      #cities = []
+      cities_in_area = []
+      cities_in_area.append(city)
+      #print(cities_in_area)
+      return cities_in_area
 
-
-  within = [inArea(lat1, lon1, lat2, lon2, c) for c in cities]
+  within = [findCitiesInArea(lat1, lon1, lat2, lon2, city) for city in cities if isInArea(lat1, lon1, lat2, lon2, city)]
 
 
   # TODO Ensure that the lat and lon valuse are all floats
@@ -124,4 +135,6 @@ def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
   print(within)
   return within
 
+cities = []
+cities.append(cityreader(cities))
 cityreader_stretch(lat1,lon1,lat2,lon2, cities)
