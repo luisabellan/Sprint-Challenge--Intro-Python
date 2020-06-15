@@ -113,9 +113,15 @@ def cityreader_stretch(lat1, lon1, lat2, lon2, cities):
         try:
             lat = float(city.lat)
             lon = float(city.lon)
+            cities_in_area = []
 
             if lat >= min(float(lat1), float(lat2)) and lat <= max(float(lat1), float(lat2)) and lon >= min(float(lon1), float(lon2)) and lon <= max(float(lon1), float(lon2)):
+                cities_in_area.append(city)
+                # print()
                 print(city)
+
+                # return city
+
         except (ValueError, AttributeError):
             print()
 
@@ -123,7 +129,7 @@ def cityreader_stretch(lat1, lon1, lat2, lon2, cities):
         cities_in_area = []
         cities_in_area.append(city)
         # print(cities_in_area)
-        return cities_in_area
+        # return cities_in_area
 
     within = [findCitiesInArea(lat1, lon1, lat2, lon2, city)
               for city in cities if isInArea(lat1, lon1, lat2, lon2, city)]
