@@ -37,14 +37,16 @@ def cityreader(cities=None):
     with open('cities.csv', newline='') as csvfile:
         citiesreader = csv.reader(csvfile, delimiter=',', quotechar='|')
         for row in citiesreader:
+            if row[0].split()[0] == "city":
+                continue
 
             name = ''.join(row[0])
             lat = ''.join(row[3])
             lon = ''.join(row[4])
             try:
                 cities.append(City(name, lat, lon))
-            except AttributeError:
-                print()
+            except AttributeError as e:
+                print(e)
 
         return cities
 
@@ -87,10 +89,10 @@ for c in cities:
 
 # Get latitude and longitude values from the user
 
-#coord1 = input("Enter lat1, lon1: \n")
-#coord2 = input("Enter lat2, lon2: ")
-coord1 = '45,-100'
-coord2 = '32,-120'
+coord1 = input("Enter lat1, lon1: \n")
+coord2 = input("Enter lat2, lon2: ")
+#coord1 = '45,-100'
+#coord2 = '32,-120'
 lat1 = coord1.split(',')[0]
 lon1 = coord1.split(',')[1]
 lat2 = coord2.split(',')[0]
