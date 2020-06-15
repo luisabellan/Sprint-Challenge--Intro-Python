@@ -87,10 +87,10 @@ for c in cities:
 
 # Get latitude and longitude values from the user
 
-coord1 = input("Enter lat1, lon1: \n")
-coord2 = input("Enter lat2, lon2: ")
-#coord1 = '45,-100'
-#coord2 = '32,-120'
+#coord1 = input("Enter lat1, lon1: \n")
+#coord2 = input("Enter lat2, lon2: ")
+coord1 = '45,-100'
+coord2 = '32,-120'
 lat1 = coord1.split(',')[0]
 lon1 = coord1.split(',')[1]
 lat2 = coord2.split(',')[0]
@@ -119,10 +119,8 @@ def cityreader_stretch(lat1, lon1, lat2, lon2, cities):
         try:
             lat = float(city.lat)
             lon = float(city.lon)
-            cities_in_area = []
 
             if (lat >= min(float(lat1), float(lat2)) and lat <= max(float(lat1), float(lat2))) and (lon >= min(float(lon1), float(lon2)) and lon <= max(float(lon1), float(lon2))):
-                cities_in_area.append(city)
 
                 return True
 
@@ -130,6 +128,7 @@ def cityreader_stretch(lat1, lon1, lat2, lon2, cities):
             print()
 
     try:
+
         within = [print(city) for city in cities if isInArea(
             lat1, lon1, lat2, lon2, city)]
     except TypeError as e:
