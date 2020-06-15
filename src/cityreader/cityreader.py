@@ -89,10 +89,10 @@ for c in cities:
 
 # Get latitude and longitude values from the user
 
-#coord1 = input("Enter lat1, lon1: \n")
-#coord2 = input("Enter lat2, lon2: ")
-coord1 = '45,-100'
-coord2 = '32,-120'
+coord1 = input("Enter lat1, lon1: \n")
+coord2 = input("Enter lat2, lon2: ")
+#coord1 = '45,-100'
+#coord2 = '32,-120'
 lat1 = coord1.split(',')[0]
 lon1 = coord1.split(',')[1]
 lat2 = coord2.split(',')[0]
