@@ -51,8 +51,8 @@ cityreader(cities)
 
 # Print the list of cities (name, lat, lon), 1 record per line.
 for c in cities:
-    pass
-    # TODO uncomment this line print(c)
+
+    print(c)
 
 # STRETCH GOAL!
 #
@@ -83,9 +83,9 @@ for c in cities:
 # Tucson: (32.1558,-110.8777)
 # Salt Lake City: (40.7774,-111.9301)
 
-# TODO Get latitude and longitude values from the user
-# coord1 = input("Enter lat1, lon1: ")
-# coord2 = input("Enter lat2, lon2: ")
+# Get latitude and longitude values from the user
+#coord1 = input("Enter lat1, lon1: ")
+#coord2 = input("Enter lat2, lon2: ")
 coord1 = '45,-100'
 coord2 = '32,-120'
 lat1 = coord1.split(',')[0]
@@ -116,7 +116,7 @@ def cityreader_stretch(lat1, lon1, lat2, lon2, cities):
 
             if lat >= min(float(lat1), float(lat2)) and lat <= max(float(lat1), float(lat2)) and lon >= min(float(lon1), float(lon2)) and lon <= max(float(lon1), float(lon2)):
                 print(city)
-        except ValueError as e:
+        except (ValueError, AttributeError):
             print()
 
     def findCitiesInArea(lat1, lon1, lat2, lon2, city):
@@ -128,11 +128,11 @@ def cityreader_stretch(lat1, lon1, lat2, lon2, cities):
     within = [findCitiesInArea(lat1, lon1, lat2, lon2, city)
               for city in cities if isInArea(lat1, lon1, lat2, lon2, city)]
 
-    # TODO Ensure that the lat and lon valuse are all floats
+    # Ensure that the lat and lon valuse are all floats
     # Go through each city and check to see if it falls within
     # the specified coordinates.
 
-    print(within)
+    # print(within)
     return within
 
 
