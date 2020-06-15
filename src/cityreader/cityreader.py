@@ -86,6 +86,7 @@ for c in cities:
 # Salt Lake City: (40.7774,-111.9301)
 
 # Get latitude and longitude values from the user
+
 coord1 = input("Enter lat1, lon1: \n")
 coord2 = input("Enter lat2, lon2: ")
 #coord1 = '45,-100'
