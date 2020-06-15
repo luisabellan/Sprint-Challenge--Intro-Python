@@ -41,8 +41,10 @@ def cityreader(cities=None):
             name = ''.join(row[0])
             lat = ''.join(row[3])
             lon = ''.join(row[4])
-
-            cities.append(City(name, lat, lon))
+            try:
+                cities.append(City(name, lat, lon))
+            except AttributeError:
+                print()
 
         return cities
 
@@ -102,9 +104,12 @@ def cityreader_stretch(lat1, lon1, lat2, lon2, cities):
         lon1 = float(lon1)
         lon2 = float(lon2)
     except AttributeError as e:
-        print()
+        print(e)
 
-    cities.append(cityreader(cities))
+    try:
+        cities.append(cityreader(cities))
+    except AttributeError as e:
+        print(e)
 
     # within will hold the cities that fall within the specified region
 
@@ -118,24 +123,26 @@ def cityreader_stretch(lat1, lon1, lat2, lon2, cities):
             if (lat >= min(float(lat1), float(lat2)) and lat <= max(float(lat1), float(lat2))) and (lon >= min(float(lon1), float(lon2)) and lon <= max(float(lon1), float(lon2))):
                 cities_in_area.append(city)
 
-                # print()
-                # print(city)
                 return True
 
         except (ValueError, AttributeError):
             print()
 
-   
-
-    within = [print(city)
-              for city in cities if isInArea(lat1, lon1, lat2, lon2, city)]
+    try:
+        within = [print(city) for city in cities if isInArea(
+            lat1, lon1, lat2, lon2, city)]
+    except TypeError as e:
+        print(e)
 
     # Ensure that the lat and lon valuse are all floats
     # Go through each city and check to see if it falls within
     # the specified coordinates.
 
     # print(within)
-    return within
+    try:
+        return within
+    except UnboundLocalError as e:
+        print(e)
 
 
 cities = []
