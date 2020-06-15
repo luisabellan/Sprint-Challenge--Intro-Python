@@ -90,7 +90,7 @@ for c in cities:
 # Get latitude and longitude values from the user
 
 coord1 = input("Enter lat1, lon1: \n")
-coord2 = input("Enter lat2, lon2: ")
+coord2 = input("Enter lat2, lon2: \n")
 #coord1 = '45,-100'
 #coord2 = '32,-120'
 lat1 = coord1.split(',')[0]
