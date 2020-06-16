@@ -58,6 +58,9 @@ for c in cities:
 
     print(c)
 
+print("\n\n")
+
+
 # STRETCH GOAL!
 #
 # Allow the user to input two points, each specified by latitude and longitude.
@@ -133,6 +136,7 @@ def cityreader_stretch(lat1, lon1, lat2, lon2, cities):
 
         within = [print(city) for city in cities if isInArea(
             lat1, lon1, lat2, lon2, city)]
+
     except TypeError as e:
         print(e)
 
