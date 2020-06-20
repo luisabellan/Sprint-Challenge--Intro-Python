@@ -1,5 +1,7 @@
 import csv
 
+cities = []
+
 # Create a class to hold a city location. Call the class "City". It should have
 # fields for name, lat and lon (representing latitude and longitude).
 
@@ -26,10 +28,11 @@ class City:
 #
 # Note that the first line of the CSV is header that describes the fields--this
 # should not be loaded into a City object.
-cities = []
 
 
-def cityreader(cities=None):
+def cityreader(cities=cities):
+
+    my_cities = cities
 
     # TODO Implement the functionality to read from the 'cities.csv' file
     # For each city record, create a new City instance and add it to the
@@ -37,23 +40,20 @@ def cityreader(cities=None):
     with open('cities.csv', newline='') as csvfile:
         citiesreader = csv.reader(csvfile, delimiter=',', quotechar='|')
         for row in citiesreader:
-            if row[0].split()[0] == "city":
-                continue
 
             name = ''.join(row[0])
             lat = ''.join(row[3])
             lon = ''.join(row[4])
             try:
-                cities.append(City(name, lat, lon))
+                if row[0].split()[0] == "city":
+                    continue
+                my_cities.append(City(name, lat, lon))
             except AttributeError as e:
-                print(e)
+                print()
 
-        return cities
-
-
-cityreader(cities)
 
 # Print the list of cities (name, lat, lon), 1 record per line.
+cityreader()
 for c in cities:
 
     print(c)
@@ -92,10 +92,10 @@ print("\n\n")
 
 # Get latitude and longitude values from the user
 
-coord1 = input("Enter lat1, lon1: \n")
-coord2 = input("Enter lat2, lon2: \n")
-#coord1 = '45,-100'
-#coord2 = '32,-120'
+#coord1 = input("Enter lat1, lon1: \n")
+#coord2 = input("Enter lat2, lon2: \n")
+coord1 = '45,-100'
+coord2 = '32,-120'
 lat1 = coord1.split(',')[0]
 lon1 = coord1.split(',')[1]
 lat2 = coord2.split(',')[0]
@@ -110,12 +110,13 @@ def cityreader_stretch(lat1, lon1, lat2, lon2, cities):
         lon1 = float(lon1)
         lon2 = float(lon2)
     except AttributeError as e:
-        print(e)
+        print()
 
     try:
         cities.append(cityreader(cities))
+
     except AttributeError as e:
-        print(e)
+        print()
 
     # within will hold the cities that fall within the specified region
 
@@ -138,7 +139,7 @@ def cityreader_stretch(lat1, lon1, lat2, lon2, cities):
             lat1, lon1, lat2, lon2, city)]
 
     except TypeError as e:
-        print(e)
+        print()
 
     # Ensure that the lat and lon valuse are all floats
     # Go through each city and check to see if it falls within
@@ -148,9 +149,8 @@ def cityreader_stretch(lat1, lon1, lat2, lon2, cities):
     try:
         return within
     except UnboundLocalError as e:
-        print(e)
+        print()
 
 
-cities = []
 # cities.append(cityreader(cities))
 cityreader_stretch(lat1, lon1, lat2, lon2, cities)
