@@ -1,8 +1,6 @@
 import csv
 
-
 cities = []
-
 
 # Create a class to hold a city location. Call the class "City". It should have
 # fields for name, lat and lon (representing latitude and longitude).
@@ -32,8 +30,9 @@ class City:
 # should not be loaded into a City object.
 
 
-def cityreader(cities):
-    city_selection = cities
+def cityreader(cities=cities):
+
+    my_cities = cities
 
     # TODO Implement the functionality to read from the 'cities.csv' file
     # For each city record, create a new City instance and add it to the
@@ -41,23 +40,20 @@ def cityreader(cities):
     with open('cities.csv', newline='') as csvfile:
         citiesreader = csv.reader(csvfile, delimiter=',', quotechar='|')
         for row in citiesreader:
-            if row[0].split()[0] == "city":
-                continue
 
             name = ''.join(row[0])
             lat = ''.join(row[3])
             lon = ''.join(row[4])
             try:
-                city_selection.append(City(name, lat, lon))
+                if row[0].split()[0] == "city":
+                    continue
+                my_cities.append(City(name, lat, lon))
             except AttributeError as e:
                 print()
 
-        return city_selection
-
-
-cityreader(cities)
 
 # Print the list of cities (name, lat, lon), 1 record per line.
+cityreader()
 for c in cities:
 
     print(c)
@@ -118,6 +114,7 @@ def cityreader_stretch(lat1, lon1, lat2, lon2, cities):
 
     try:
         cities.append(cityreader(cities))
+
     except AttributeError as e:
         print()
 
@@ -155,6 +152,5 @@ def cityreader_stretch(lat1, lon1, lat2, lon2, cities):
         print()
 
 
-cities = []
 # cities.append(cityreader(cities))
 cityreader_stretch(lat1, lon1, lat2, lon2, cities)
